@@ -1,0 +1,28 @@
+/*
+	ŠPECIFIKÁCIA
+
+	--- Fonty
+	Raleway Black
+	Raleway Medium
+
+	--- Farby
+	#ffffff
+	#333333
+	#e6e6e6
+
+	--- Veľkosti, výška riadku
+	15px, 26px
+	21px, 35px
+	51px, 81px
+
+	--- Gradient
+	od #e40004
+	do #222f8d
+
+	--- Hodnoty (veľkosti, farby) ukladajte do CSS variables
+	--- CSS reset už netreba pridávať, je tam Bootstrap Reboot
+	--- CSS grid je tam už tiež, Bootstrap
+	--- Vlastné CSS používajte minimálne, využite Bootstrap Utilities kde sa dá
+	--- Bootstrap časti sú z verzie 5, treba pozerať dokumentáciu getbootstrap.com
+*/
+
