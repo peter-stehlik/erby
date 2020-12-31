@@ -38,7 +38,7 @@
 
 body {
 	text-align: center;
-	font-family: 'Raleway Medium', arial;
+	font-family: 'Raleway', arial;
 }
 
 .top-band {
@@ -47,7 +47,7 @@ body {
 }
 
 header {
-	font-family: 'Raleway Black', arial;
+	font-weight: 900;
 	font-size: var(--header-font-size);
 	color: var(--main-font-color);
 	margin: 50px 0 80px 0;
@@ -63,7 +63,8 @@ header::before {
 .sidebar-info {
 	position: fixed;
 	top: 0;
-	left: -367px;
+	left: 0;
+	transform: translateX(-367px);
 	height: 100%;
 	width: 550px;
 	text-align: left;
@@ -85,19 +86,27 @@ header::before {
 .sidebar-info a {
 	text-decoration: none;
 	font-size: 21px;
-	font-family: 'Raleway Black', arial;
+	font-weight: 900;
 	color: var(--main-search-font-color);
 }
 
 .sidebar-info-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	height: 100%;
 	background: var(--main-font-color);
 	padding: 80px 10px 0 10px;
 }
 
+.sidebar-info-text div:nth-child(2) {
+	margin-bottom: 50px;
+}
+
+
 .menu {
 	margin-top: 38px;
-	font-family: 'Raleway Black', arial;
+	font-family: 500;
 	font-size: 21px;
 	color: var(--main-search-font-color);
 }
@@ -120,6 +129,30 @@ header::before {
 
 .menu p {
 	margin-left: 10px;
-	color: var(--main-background-color);
+	font-weight: 900;
+	color: var(--main-font-color);
+	opacity: 0;
 	transition: all .3s ease;
+}
+
+.close-icon {
+	margin-top: 35px;
+	display: block;
+	cursor: pointer;
+}
+
+input[type=text] {
+	margin-top: 100px;
+	width: 900px;
+	text-align: center;
+	font-size: 51px;
+	font-weight: 900;
+  	border: 0;
+	border-bottom: 1px solid #333333;
+	color: var(--main-font-color);
+}
+
+::placeholder {
+	color: var(--main-search-font-color);
+	opacity: 1;
 }

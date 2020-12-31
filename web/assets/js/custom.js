@@ -11,20 +11,28 @@ let Custom = {
 	 * handle navigation
 	 */
 	toggleSidebar: () => {
-		const addIcon = document.getElementsByClassName('menu-erb-icon');
-		const searchIcon = document.getElementsByClassName('menu-search-icon');
-		const infoIcon = document.getElementsByClassName('menu-info-icon')
 
-		const addText = document.getElementsByClassName('menu-add-text');
-		const infoText = document.getElementsByClassName('menu-info-text');
-		const searchText = document.getElementsByClassName('menu-search-text');
+
+		const arrayOfIcons = Array.from(
+				document.getElementsByClassName('menu')[0].querySelectorAll('img')
+				);
+
+		const arraOfTexts = Array.from(
+				document.getElementsByClassName('menu')[0].querySelectorAll('p')
+				);
+
 
 		const sidebar = document.getElementsByClassName('sidebar-info');
 
-		const arrayOfIcons = [addIcon[0], searchIcon[0], infoIcon[0]];
-		const arraOfTexts = [addText[0], searchText[0], infoText[0]];
+		const closeIcon = document.getElementsByClassName('close-icon')[0];
 
 		var toggle = false;
+
+		closeIcon.addEventListener('click', function () {
+			sidebar[0].style.transform = 'translateX(-367px)';
+			toggle = false;
+		} )
+
 
 		arrayOfIcons.map( (icon,i) => {
 			icon.addEventListener('mousemove', function() {
@@ -35,32 +43,36 @@ let Custom = {
 				hideText(i)
 			})
 
-
 			icon.addEventListener('click', function() {
-				toggleSidebarOnClick()
+				toggleSidebarOnClick(i)
 			})
-
 		})
 
 
 		function showText(index) {
-			arraOfTexts[index].style.color = ' #333333';
+			arraOfTexts[index].style.opacity = '1';
 		}
 
 
 		function hideText(index) {
-			arraOfTexts[index].style.color = ' #ffffff';
+			arraOfTexts[index].style.opacity = '0';
 		}
 
-		function toggleSidebarOnClick() {
+		function toggleSidebarOnClick(data) {
 
-			if (!toggle) {
-				sidebar[0].style.left = '0';
-				toggle = true;
-				console.log(toggle);
-			} else {
-				sidebar[0].style.left = '-367px';
+			const translateHideSidebar = () => {
+				sidebar[0].style.transform = 'translateX(-367px)';
 				toggle = false;
+			}
+
+			if (data === 1) {
+				translateHideSidebar()
+			}
+			else if (!toggle) {
+				sidebar[0].style.transform = 'translateX(0)';
+				toggle = true;
+			} else {
+				translateHideSidebar()
 			}
 		}
 
