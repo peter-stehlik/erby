@@ -19,9 +19,12 @@ let Custom = {
 		const infoText = document.getElementsByClassName('menu-info-text');
 		const searchText = document.getElementsByClassName('menu-search-text');
 
+		const sidebar = document.getElementsByClassName('sidebar-info');
 
 		const arrayOfIcons = [addIcon[0], searchIcon[0], infoIcon[0]];
 		const arraOfTexts = [addText[0], searchText[0], infoText[0]];
+
+		var toggle = false;
 
 		arrayOfIcons.map( (icon,i) => {
 			icon.addEventListener('mousemove', function() {
@@ -31,6 +34,12 @@ let Custom = {
 			icon.addEventListener('mouseout', function () {
 				hideText(i)
 			})
+
+
+			icon.addEventListener('click', function() {
+				toggleSidebarOnClick()
+			})
+
 		})
 
 
@@ -43,7 +52,20 @@ let Custom = {
 			arraOfTexts[index].style.color = ' #ffffff';
 		}
 
-		console.log(arrayOfIcons, arraOfTexts);
+		function toggleSidebarOnClick() {
+
+			if (!toggle) {
+				sidebar[0].style.left = '0';
+				toggle = true;
+				console.log(toggle);
+			} else {
+				sidebar[0].style.left = '-367px';
+				toggle = false;
+			}
+		}
+
+
+
 
 	},
 

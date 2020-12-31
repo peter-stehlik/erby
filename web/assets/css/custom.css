@@ -63,12 +63,17 @@ header::before {
 .sidebar-info {
 	position: fixed;
 	top: 0;
-	left: 0;
+	left: -367px;
 	height: 100%;
 	width: 550px;
 	text-align: left;
 	color: var(--main-search-font-color);
 	font-size: 15px;
+	transition: all .5s ease;
+}
+
+.toggleSidebar {
+	left: 0;
 }
 
 .sidebar-info .row {
