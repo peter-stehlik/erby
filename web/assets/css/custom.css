@@ -26,3 +26,95 @@
 	--- Bootstrap časti sú z verzie 5, treba pozerať dokumentáciu getbootstrap.com
 */
 
+:root {
+	--main-background-color: #ffffff;
+	--main-font-color: #333333;
+	--main-search-font-color: #e6e6e6;
+
+	--header-font-size: 51px;
+	--items-font-size: 21px;
+	--text-font-size: 51px;
+}
+
+body {
+	text-align: center;
+	font-family: 'Raleway Medium', arial;
+}
+
+.top-band {
+	background-color: var(--main-font-color);
+	height: 21px;
+}
+
+header {
+	font-family: 'Raleway Black', arial;
+	font-size: var(--header-font-size);
+	color: var(--main-font-color);
+	margin: 50px 0 80px 0;
+}
+
+header::before {
+	display: inline;
+	content: url('../erb-icon.png');
+	vertical-align: -11px;
+	margin-right: 10px;
+}
+
+.sidebar-info {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 550px;
+	text-align: left;
+	color: var(--main-search-font-color);
+	font-size: 15px;
+}
+
+.sidebar-info .row {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+
+}
+.sidebar-info a {
+	text-decoration: none;
+	font-size: 21px;
+	font-family: 'Raleway Black', arial;
+	color: var(--main-search-font-color);
+}
+
+.sidebar-info-text {
+	height: 100%;
+	background: var(--main-font-color);
+	padding: 80px 10px 0 10px;
+}
+
+.menu {
+	margin-top: 38px;
+	font-family: 'Raleway Black', arial;
+	font-size: 21px;
+	color: var(--main-search-font-color);
+}
+
+.menu div {
+	display: block;
+	margin-bottom: 20px;
+}
+.menu div:nth-child(3) {
+	margin-left: 15px;
+}
+
+.menu img {
+	cursor: pointer;
+}
+
+.menu img, .menu p {
+	display: inline-block;
+}
+
+.menu p {
+	margin-left: 10px;
+	color: var(--main-background-color);
+	transition: all .3s ease;
+}
