@@ -111,7 +111,37 @@ let Custom = {
 	 */
 	initAutocomplete: () => {
 
-		const cities = [Poprad, Presov, Pezinok, Poltar, Pardubice, Puchov, Svidnik, Stropkov, Sabinov, Senica, Senec, Senica, Spisska, Martin, Malacky, Medzilaborce]
+		const cities = ['Poprad', 'Presov', 'Pezinok', 'Poltar', 'Pardubice', 'Puchov', 'Svidnik', 'Stropkov', 'Sabinov', 'Smizany', 'Senec', 'Senica', 'Spisska', 'Martin', 'Malacky', 'Medzilaborce']
+
+		const listOfResults = document.getElementsByClassName('list-of-results')[0];
+
+		let inputValue = document.getElementById('textbox_id');
+
+		let lowerCaseCities = cities.map(city => city.toLowerCase())
+
+
+		inputValue.addEventListener('input', event => {
+
+			listOfResults.innerHTML = "";
+
+			let actualValue = event.target.value.toLowerCase()
+
+			let found = lowerCaseCities.filter(el => !el.search(actualValue, 0))
+
+			console.log(found.length);
+
+			for (let i = 0; i < found.length; i++) {
+				const liElement = document.createElement('li')
+
+				liElement.innerHTML = found[i].charAt(0).toUpperCase() + found[i].slice(1);;
+				listOfResults.appendChild(liElement);
+			}
+
+
+		})
+
+
+
 
 
 

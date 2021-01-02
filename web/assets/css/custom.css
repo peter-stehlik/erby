@@ -161,7 +161,7 @@ input[type=text] {
 	font-weight: 900;
   	border: 0;
 	border-bottom: 1px solid #333333;
-	color: var(--main-font-color);
+	color: var(--main-search-font-color);;
 }
 
 ::placeholder {
@@ -170,6 +170,7 @@ input[type=text] {
 }
 
 .search-results {
+	margin-top: 50px;
 	overflow: auto;
 	height: 300px;
 }
