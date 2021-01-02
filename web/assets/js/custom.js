@@ -22,16 +22,26 @@ let Custom = {
 				);
 
 
-		const sidebar = document.getElementsByClassName('sidebar-info');
+		const sidebar = document.getElementsByClassName('sidebar-info')[0];
 
-		const closeIcon = document.getElementsByClassName('close-icon')[0];
+		const closeIcon = Array.from(document.querySelectorAll('.close-icon'));
+
+		const addNew = document.getElementsByClassName('add-new')[0];
+		const aboutProject = document.getElementsByClassName('about-project')[0];
+
+		const sidebarTexts = [addNew, , aboutProject];
 
 		var toggle = false;
 
-		closeIcon.addEventListener('click', function () {
-			sidebar[0].style.transform = 'translateX(-367px)';
+
+
+
+		closeIcon.map( map => {
+			map.addEventListener('click', function () {
+			sidebar.style.transform = 'translateX(-367px)';
 			toggle = false;
-		} )
+			})
+		})
 
 
 		arrayOfIcons.map( (icon,i) => {
@@ -58,10 +68,13 @@ let Custom = {
 			arraOfTexts[index].style.opacity = '0';
 		}
 
+
+
+
 		function toggleSidebarOnClick(data) {
 
 			const translateHideSidebar = () => {
-				sidebar[0].style.transform = 'translateX(-367px)';
+				sidebar.style.transform = 'translateX(-367px)';
 				toggle = false;
 			}
 
@@ -69,7 +82,18 @@ let Custom = {
 				translateHideSidebar()
 			}
 			else if (!toggle) {
-				sidebar[0].style.transform = 'translateX(0)';
+				sidebar.style.transform = 'translateX(0)';
+
+				const newSidebarTexts = [...sidebarTexts];
+				newSidebarTexts.splice(data, 1);
+
+				newSidebarTexts.map( item => {
+					if (item === undefined) return
+					else{ item.style.display = 'none'}
+				})
+
+				sidebarTexts[data].style.display = 'block';
+
 				toggle = true;
 			} else {
 				translateHideSidebar()
@@ -86,6 +110,11 @@ let Custom = {
 	 * when typing
 	 */
 	initAutocomplete: () => {
+
+		const cities = [Poprad, Presov, Pezinok, Poltar, Pardubice, Puchov, Svidnik, Stropkov, Sabinov, Senica, Senec, Senica, Spisska, Martin, Malacky, Medzilaborce]
+
+
+
 
 	}
 

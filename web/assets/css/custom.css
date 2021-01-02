@@ -60,6 +60,13 @@ header::before {
 	margin-right: 10px;
 }
 
+li {
+	list-style: none;
+	font-size: var(--header-font-size);
+	font-weight: 900;
+	color: var(--main-search-font-color);
+}
+
 .sidebar-info {
 	position: fixed;
 	top: 0;
@@ -127,6 +134,11 @@ header::before {
 	display: inline-block;
 }
 
+.add-new, .about-project {
+	display: none;
+}
+
+
 .menu p {
 	margin-left: 10px;
 	font-weight: 900;
@@ -155,4 +167,9 @@ input[type=text] {
 ::placeholder {
 	color: var(--main-search-font-color);
 	opacity: 1;
+}
+
+.search-results {
+	overflow: auto;
+	height: 300px;
 }
