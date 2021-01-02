@@ -111,7 +111,7 @@ let Custom = {
 	 */
 	initAutocomplete: () => {
 
-		const cities = ['Poprad', 'Presov', 'Pezinok', 'Poltar', 'Pardubice', 'Puchov', 'Svidnik', 'Stropkov', 'Sabinov', 'Smizany', 'Senec', 'Senica', 'Spisska', 'Martin', 'Malacky', 'Medzilaborce']
+		const cities = ['Poprad', 'Prešov', 'Pezinok', 'Poltar', 'Pardubice', 'Puchov', 'Svidnik', 'Stropkov', 'Sabinov', 'Smizany', 'Senec', 'Senica', 'Spisska', 'Martin', 'Malacky', 'Medzilaborce']
 
 		const listOfResults = document.getElementsByClassName('list-of-results')[0];
 
@@ -124,8 +124,6 @@ let Custom = {
 
 			listOfResults.innerHTML = "";
 
-
-
 			let actualValue = event.target.value.toLowerCase()
 
 			let foundCities = lowerCaseCities.filter(el => !el.search(actualValue, 0))
@@ -135,12 +133,20 @@ let Custom = {
 			}
 
 			for (let i = 0; i < foundCities.length; i++) {
-				const liElement = document.createElement('li')
+				const liElement = document.createElement('li');
 
-				liElement.innerHTML = foundCities[i].charAt(0).toUpperCase() + foundCities[i].slice(1);;
+				const link = document.createElement('a');
+				Object.assign(link,{
+								href: '../../detail.html'
+				});
+
+
+				link.innerHTML = foundCities[i].charAt(0).toUpperCase() + foundCities[i].slice(1);
+
+				liElement.appendChild(link);
 				listOfResults.appendChild(liElement);
-			}
 
+			}
 
 		})
 
