@@ -124,16 +124,20 @@ let Custom = {
 
 			listOfResults.innerHTML = "";
 
+
+
 			let actualValue = event.target.value.toLowerCase()
 
-			let found = lowerCaseCities.filter(el => !el.search(actualValue, 0))
+			let foundCities = lowerCaseCities.filter(el => !el.search(actualValue, 0))
 
-			console.log(found.length);
+			if (foundCities.length === cities.length) {
+				return;
+			}
 
-			for (let i = 0; i < found.length; i++) {
+			for (let i = 0; i < foundCities.length; i++) {
 				const liElement = document.createElement('li')
 
-				liElement.innerHTML = found[i].charAt(0).toUpperCase() + found[i].slice(1);;
+				liElement.innerHTML = foundCities[i].charAt(0).toUpperCase() + foundCities[i].slice(1);;
 				listOfResults.appendChild(liElement);
 			}
 
