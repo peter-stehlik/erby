@@ -44,6 +44,7 @@ let Custom = {
 		})
 
 
+
 		arrayOfIcons.map( (icon,i) => {
 			icon.addEventListener('mousemove', function() {
 				showText(i)
@@ -68,15 +69,20 @@ let Custom = {
 			arraOfTexts[index].style.opacity = '0';
 		}
 
+		const translateHideSidebar = () => {
+			sidebar.style.transform = 'translateX(-367px)';
+			toggle = false;
+		}
 
+
+		document.addEventListener('keyup', event => {
+			if (event.key === 'Escape') {
+			translateHideSidebar();
+			}
+		})
 
 
 		function toggleSidebarOnClick(data) {
-
-			const translateHideSidebar = () => {
-				sidebar.style.transform = 'translateX(-367px)';
-				toggle = false;
-			}
 
 			if (data === 1) {
 				translateHideSidebar()
