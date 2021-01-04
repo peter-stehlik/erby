@@ -150,97 +150,41 @@ let Custom = {
 	 */
 	initAutocomplete: () => {
 
-		const cities = ['Poprad', 'Prešov', 'Pezinok', 'Poltar', 'Pardubice', 'Puchov', 'Svidnik', 'Stropkov', 'Sabinov', 'Smizany', 'Senec', 'Senica', 'Spisska', 'Martin', 'Malacky', 'Medzilaborce']
 
-		const listOfResults = document.getElementsByClassName('list-of-results')[0];
+		const listOfResults = Array.from(document.querySelector('.list-of-results').children);
 
 		let inputValue = document.getElementById('textbox_id');
-
-		let lowerCaseCities = cities.map(city => city.toLowerCase())
 
 		const capitalize = (word) => {
 			return word.charAt(0).toUpperCase() + word.slice(1);
 		}
 
 
-		const wholeListLi = () => {
-
-			let allCities =  cities.map( city => {
-				const liElement = document.createElement('li');
-				const link = document.createElement('a');
-				Object.assign(link, {
-					href: '../../detail.html'
-				}).dataset.name = city.toLowerCase();
-
-				link.innerHTML = capitalize(city)
-
-				liElement.appendChild(link);
-				listOfResults.appendChild(liElement);
-			})
-
-			return allCities;
-		}
-
-		wholeListLi();
-
-
 		inputValue.addEventListener('input', event => {
 
 			let actualValue = event.target.value.toLowerCase();
 
-			const allCities = Array.from(document.getElementsByClassName('list-of-results')[0]);
+			listOfResults.forEach(element => {
 
-			console.log(allCities);
+				if (actualValue.length === 0) {
+					element.style.display = 'none';
+					return
+				}
 
-			let foundCities = lowerCaseCities.filter(el => !el.search(actualValue, 0))
+				let datsetNameAttr = element.children[0].dataset.name;
 
-			if (foundCities.length === cities.length) {
-				return;
-			}
-			for (let i = 0; i < foundCities.length; i++) {
-				const liElement = document.createElement('li');
+				let found =	datsetNameAttr.indexOf(actualValue, 0);
 
-				const link = document.createElement('a');
-				Object.assign(link, {
-					href: '../../detail.html'
-				}).dataset.name = foundCities[i];
 
-				link.innerHTML = foundCities[i].charAt(0).toUpperCase() + foundCities[i].slice(1);
+				if ( found !== -1 && found === 0) {
+					element.style.display = 'block';
+				} else {
+					element.style.display = 'none';
+				}
 
-				liElement.appendChild(link);
-				listOfResults.appendChild(liElement);
-
-			}
+			});
 
 		})
-
-		/*inputValue.addEventListener('input', event => {
-
-			listOfResults.innerHTML = "";
-
-			let actualValue = event.target.value.toLowerCase()
-
-
-
-
-
-			for (let i = 0; i < foundCities.length; i++) {
-				const liElement = document.createElement('li');
-
-				const link = document.createElement('a');
-				Object.assign(link,{
-								href: '../../detail.html'
-				}).dataset.name = foundCities[i];
-
-				link.innerHTML = foundCities[i].charAt(0).toUpperCase() + foundCities[i].slice(1);
-
-				liElement.appendChild(link);
-				listOfResults.appendChild(liElement);
-
-			}
-
-
-		})*/
 
 
 
