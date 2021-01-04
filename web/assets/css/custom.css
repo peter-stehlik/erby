@@ -32,8 +32,11 @@
 	--main-search-font-color: #e6e6e6;
 
 	--header-font-size: 51px;
+	--heder-line-height: 81px;
 	--items-font-size: 21px;
+	--items-line-height: 35px;
 	--text-font-size: 15px;
+	--text-line-height: 26px;
 }
 
 body {
@@ -42,7 +45,7 @@ body {
 }
 
 p {
-	line-height: 26px;
+	line-height: var(--text-line-height);
 }
 
 a {
@@ -62,6 +65,7 @@ h1 {
 	font-weight: 900;
 	font-size: var(--header-font-size);
 	color: var(--main-font-color);
+	line-height: var(--heder-line-height);
 }
 
 .header {
@@ -128,7 +132,7 @@ h1 {
 	justify-content: space-between;
 	height: 100%;
 	background: var(--main-font-color);
-	padding: 50px 10px 0 10px;
+	padding: 40px 40px 40px 40px;
 }
 
 .sidebar-info-text div:nth-child(2) {
@@ -146,7 +150,6 @@ h1 {
 	margin-top: 70px;
 	font-size:var(--items-font-size);
 	color: var(--main-search-font-color);
-	background: #ffffff61;
 }
 
 .menu div {
@@ -234,7 +237,7 @@ input:focus {
 }
 
 .search-results {
-	margin-top: 50px;
+	margin-top: 10px;
 	overflow: auto;
 	height: 300px;
 	width: 900px;
@@ -335,6 +338,7 @@ input:focus {
 		display: flex;
 		justify-content: space-around;
 		margin: 0;
+		background: #ffffffde;
 	}
 
 

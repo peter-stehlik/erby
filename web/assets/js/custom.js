@@ -160,7 +160,8 @@ let Custom = {
 				const link = document.createElement('a');
 				Object.assign(link,{
 								href: '../../detail.html'
-				});
+				}).dataset.name = foundCities[i];
+
 
 
 				link.innerHTML = foundCities[i].charAt(0).toUpperCase() + foundCities[i].slice(1);
