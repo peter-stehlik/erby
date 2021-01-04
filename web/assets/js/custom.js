@@ -17,6 +17,7 @@ let Custom = {
 				document.getElementsByClassName('menu')[0].querySelectorAll('div')
 				);
 
+
 		const arrayOfTexts = Array.from(
 				document.getElementsByClassName('menu')[0].querySelectorAll('p')
 				);
@@ -34,6 +35,7 @@ let Custom = {
 		const sidebarTexts = [addNew, , aboutProject];
 
 		var toggle = false;
+		var text;
 
 		const innerW = window.innerWidth;
 
@@ -44,8 +46,6 @@ let Custom = {
 			toggle = false;
 			})
 		})
-
-
 
 		arrayOfIcons.map( (icon,i) => {
 			icon.addEventListener('mousemove', function() {
@@ -101,26 +101,38 @@ let Custom = {
 			}
 		}
 
+		const showSidebarText = (data) => {
+			const newSidebarTexts = [...sidebarTexts];
+			newSidebarTexts.splice(data, 1);
+
+			newSidebarTexts.map(item => {
+				if (item === undefined) return
+				else { item.style.display = 'none' }
+			})
+
+			sidebarTexts[data].style.display = 'block';;
+
+			text = data;
+		}
+
+
+
 		function toggleSidebarOnClick(data) {
 
 			if (data === 1) {
-				translateHideSidebar()
+				translateHideSidebar();
 				toggle = false;
+				return
+			}
+
+			if ( text !== data && toggle) {
+				showSidebarText(data);
+				return
 			}
 
 			else if (!toggle) {
-				translateShowSidebar()
-
-				const newSidebarTexts = [...sidebarTexts];
-				newSidebarTexts.splice(data, 1);
-
-				newSidebarTexts.map( item => {
-					if (item === undefined) return
-					else{ item.style.display = 'none'}
-				})
-
-				sidebarTexts[data].style.display = 'block';
-
+				translateShowSidebar();
+				showSidebarText(data);
 				toggle = true;
 
 			} else {
@@ -129,6 +141,7 @@ let Custom = {
 			}
 
 		}
+
 	},
 
 	/**
