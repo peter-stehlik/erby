@@ -38,7 +38,7 @@ let Custom = {
 
 		closeIcon.map( map => {
 			map.addEventListener('click', function () {
-			sidebar.style.transform = 'translateX(-367px)';
+			translateHideSidebar();
 			toggle = false;
 			})
 		})
@@ -56,7 +56,6 @@ let Custom = {
 
 			icon.addEventListener('click', function() {
 				toggleSidebarOnClick(i)
-				responsiveSidebar(innerW >= 922);
 			})
 		})
 
@@ -69,11 +68,6 @@ let Custom = {
 			arrayOfTexts[index].style.opacity = '0';
 		}
 
-		const translateHideSidebar = (translate) => {
-			sidebar.style.transform = translate;
-			toggle = false;
-		}
-
 
 		document.addEventListener('keyup', event => {
 			if (event.key === 'Escape') {
@@ -82,39 +76,36 @@ let Custom = {
 		})
 
 
-
-
-		function responsiveSidebar(responsiveWidth) {
-			if (responsiveWidth) {
-				return translate = 'translateX(-367px)';
+		const translateHideSidebar = () => {
+			if (window.innerWidth <= 922) {
+				sidebar.classList.add('sidebar-mobile-hide');
+				sidebar.classList.remove('sidebar-mobile-show');
 			} else {
-				return translate = 'translateY(-200px)';
+				sidebar.classList.add('sidebar-hide');
+				sidebar.classList.remove('sidebar-show');
 			}
 		}
 
-		const checkWidth = () => {
-			const mq = window.matchMedia(`(max-width: 992px)`);
-			changePlaceholder(mq.matches);
 
+		const translateShowSidebar = () => {
+			if (window.innerWidth <= 922) {
+				sidebar.classList.add('sidebar-mobile-show');
+				sidebar.classList.remove('sidebar-mobile-hide');
+			} else {
+ 				sidebar.classList.add('sidebar-show');
+				sidebar.classList.remove('sidebar-hide');
+			}
 		}
-
-		window.addEventListener("resize", function() {
-			checkWidth();
-
-		});
-
-		var translate = responsiveSidebar(innerW >= 922);
-
-		console.log(translate);
-
 
 		function toggleSidebarOnClick(data) {
 
 			if (data === 1) {
-				translateHideSidebar(translate)
+				translateHideSidebar()
+				toggle = false;
 			}
+
 			else if (!toggle) {
-				sidebar.style.transform = 'translateX(0)';
+				translateShowSidebar()
 
 				const newSidebarTexts = [...sidebarTexts];
 				newSidebarTexts.splice(data, 1);
@@ -127,9 +118,12 @@ let Custom = {
 				sidebarTexts[data].style.display = 'block';
 
 				toggle = true;
+
 			} else {
-				translateHideSidebar(translate)
+				translateHideSidebar();
+				toggle = false;
 			}
+
 		}
 	},
 
@@ -176,8 +170,20 @@ let Custom = {
 
 			}
 
+
 		})
 
+
+
+
+		const checkWidth = () => {
+			const mq = window.matchMedia(`(max-width: 992px)`);
+			changePlaceholder(mq.matches);
+		}
+
+		window.addEventListener("resize", function () {
+			checkWidth();
+		});
 
 		changePlaceholder = (data) => {
 			if (data) {
@@ -186,8 +192,11 @@ let Custom = {
 				inputValue.setAttribute("placeholder", "Tu zadajte názov obce alebo mesta")
 			}
 		}
+		const innerW = window.innerWidth;
 
 		changePlaceholder(innerW <= 922)
+
+
 	}
 
 }
