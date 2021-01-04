@@ -141,18 +141,71 @@ let Custom = {
 
 		let lowerCaseCities = cities.map(city => city.toLowerCase())
 
+		const capitalize = (word) => {
+			return word.charAt(0).toUpperCase() + word.slice(1);
+		}
+
+
+		const wholeListLi = () => {
+
+			let allCities =  cities.map( city => {
+				const liElement = document.createElement('li');
+				const link = document.createElement('a');
+				Object.assign(link, {
+					href: '../../detail.html'
+				}).dataset.name = city.toLowerCase();
+
+				link.innerHTML = capitalize(city)
+
+				liElement.appendChild(link);
+				listOfResults.appendChild(liElement);
+			})
+
+			return allCities;
+		}
+
+		wholeListLi();
+
 
 		inputValue.addEventListener('input', event => {
 
-			listOfResults.innerHTML = "";
+			let actualValue = event.target.value.toLowerCase();
 
-			let actualValue = event.target.value.toLowerCase()
+			const allCities = Array.from(document.getElementsByClassName('list-of-results')[0]);
+
+			console.log(allCities);
 
 			let foundCities = lowerCaseCities.filter(el => !el.search(actualValue, 0))
 
 			if (foundCities.length === cities.length) {
 				return;
 			}
+			for (let i = 0; i < foundCities.length; i++) {
+				const liElement = document.createElement('li');
+
+				const link = document.createElement('a');
+				Object.assign(link, {
+					href: '../../detail.html'
+				}).dataset.name = foundCities[i];
+
+				link.innerHTML = foundCities[i].charAt(0).toUpperCase() + foundCities[i].slice(1);
+
+				liElement.appendChild(link);
+				listOfResults.appendChild(liElement);
+
+			}
+
+		})
+
+		/*inputValue.addEventListener('input', event => {
+
+			listOfResults.innerHTML = "";
+
+			let actualValue = event.target.value.toLowerCase()
+
+
+
+
 
 			for (let i = 0; i < foundCities.length; i++) {
 				const liElement = document.createElement('li');
@@ -162,8 +215,6 @@ let Custom = {
 								href: '../../detail.html'
 				}).dataset.name = foundCities[i];
 
-
-
 				link.innerHTML = foundCities[i].charAt(0).toUpperCase() + foundCities[i].slice(1);
 
 				liElement.appendChild(link);
@@ -172,7 +223,7 @@ let Custom = {
 			}
 
 
-		})
+		})*/
 
 
 
