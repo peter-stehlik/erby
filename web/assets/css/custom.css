@@ -62,7 +62,10 @@ h1 {
 	font-weight: 900;
 	font-size: var(--header-font-size);
 	color: var(--main-font-color);
-	margin: 50px 0 80px 0;
+}
+
+.header {
+	margin: 40px 0 80px 0;
 }
 
 .header::before {
@@ -119,10 +122,11 @@ h1 {
 
 
 .menu {
-	margin-top: 38px;
+	margin-top: 70px;
 	font-family: 500;
 	font-size:var(--items-font-size);
 	color: var(--main-search-font-color);
+
 }
 
 .menu div {
@@ -218,7 +222,8 @@ input[type=text] {
 }
 
 .detail-header {
-	margin-top: 50px;
+	margin-top: 40px;
+	margin-bottom: 30px;
 }
 
 .admin-details p {
@@ -234,4 +239,57 @@ input[type=text] {
 	font-size: var(--header-font-size);
 	font-weight: 900;
 	color: var(--main-search-font-color);
+}
+
+
+
+
+/*-------------------------------------
+-------------Media queries-------------
+-------------------------------------*/
+
+
+@media (max-width: 992px) {
+
+	.sidebar-info {
+		transform: translateX(0);
+		top: unset;
+		bottom: 0;
+		left: 0;
+		height: 300px;
+		width: 100%;
+	}
+
+	.sidebar-info-text {
+		width: 100%;
+	}
+
+	.inovative {
+		display: none;
+	}
+
+	.menu {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+	}
+
+
+	.menu div {
+		display: inline-block;
+	}
+
+	.menu p {
+		display: none;
+	}
+
+
+
+
+	input[type=text] {
+		width: 100%;
+	}
 }

@@ -17,7 +17,7 @@ let Custom = {
 				document.getElementsByClassName('menu')[0].querySelectorAll('img')
 				);
 
-		const arraOfTexts = Array.from(
+		const arrayOfTexts = Array.from(
 				document.getElementsByClassName('menu')[0].querySelectorAll('p')
 				);
 
@@ -33,7 +33,7 @@ let Custom = {
 
 		var toggle = false;
 
-
+		const innerW = window.innerWidth;
 
 
 		closeIcon.map( map => {
@@ -56,21 +56,21 @@ let Custom = {
 
 			icon.addEventListener('click', function() {
 				toggleSidebarOnClick(i)
+				responsiveSidebar(innerW >= 922);
 			})
 		})
 
 
 		function showText(index) {
-			arraOfTexts[index].style.opacity = '1';
+			arrayOfTexts[index].style.opacity = '1';
 		}
-
 
 		function hideText(index) {
-			arraOfTexts[index].style.opacity = '0';
+			arrayOfTexts[index].style.opacity = '0';
 		}
 
-		const translateHideSidebar = () => {
-			sidebar.style.transform = 'translateX(-367px)';
+		const translateHideSidebar = (translate) => {
+			sidebar.style.transform = translate;
 			toggle = false;
 		}
 
@@ -82,10 +82,36 @@ let Custom = {
 		})
 
 
+
+
+		function responsiveSidebar(responsiveWidth) {
+			if (responsiveWidth) {
+				return translate = 'translateX(-367px)';
+			} else {
+				return translate = 'translateY(-200px)';
+			}
+		}
+
+		const checkWidth = () => {
+			const mq = window.matchMedia(`(max-width: 992px)`);
+			changePlaceholder(mq.matches);
+
+		}
+
+		window.addEventListener("resize", function() {
+			checkWidth();
+
+		});
+
+		var translate = responsiveSidebar(innerW >= 922);
+
+		console.log(translate);
+
+
 		function toggleSidebarOnClick(data) {
 
 			if (data === 1) {
-				translateHideSidebar()
+				translateHideSidebar(translate)
 			}
 			else if (!toggle) {
 				sidebar.style.transform = 'translateX(0)';
@@ -102,13 +128,9 @@ let Custom = {
 
 				toggle = true;
 			} else {
-				translateHideSidebar()
+				translateHideSidebar(translate)
 			}
 		}
-
-
-
-
 	},
 
 	/**
@@ -157,11 +179,15 @@ let Custom = {
 		})
 
 
+		changePlaceholder = (data) => {
+			if (data) {
+				inputValue.setAttribute("placeholder", "obec/mesto")
+			} else {
+				inputValue.setAttribute("placeholder", "Tu zadajte názov obce alebo mesta")
+			}
+		}
 
-
-
-
-
+		changePlaceholder(innerW <= 922)
 	}
 
 }
