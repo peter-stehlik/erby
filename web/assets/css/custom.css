@@ -84,9 +84,9 @@ h1 {
 .sidebar-info {
 	position: fixed;
 	top: 0;
-	left: -367px;
+	left: -400px;
 	height: 100%;
-	width: 550px;
+	width: 600px;
 	text-align: left;
 	color: var(--main-search-font-color);
 	font-size: var(--text-font-size);
@@ -98,7 +98,7 @@ h1 {
 }
 
 .sidebar-show {
-	transform: translate3d(367px, 0, 0);
+	transform: translate3d(400px, 0, 0);
 }
 
 .sidebar-mobile-hide {
@@ -154,23 +154,29 @@ h1 {
 
 .menu div {
 	display: block;
-	margin-bottom: 20px;
-}
-.menu div:nth-child(3) {
-	margin-left: 15px;
+	margin-bottom: 45px;
+	position: relative;
 }
 
 .menu img {
 	cursor: pointer;
 }
 
-.menu img, .menu p {
+.menu-erb-icon, .menu-search-icon, .menu-info-icon, .menu p {
 	display: inline-block;
 }
 
 .add-new, .about-project {
 	display: none;
 }
+
+
+.menu-icon-dark {
+	position: absolute;
+	left: 0;
+	opacity: 0;
+}
+
 
 
 .menu p {

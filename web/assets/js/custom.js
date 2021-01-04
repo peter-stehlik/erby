@@ -14,12 +14,14 @@ let Custom = {
 
 
 		const arrayOfIcons = Array.from(
-				document.getElementsByClassName('menu')[0].querySelectorAll('img')
+				document.getElementsByClassName('menu')[0].querySelectorAll('div')
 				);
 
 		const arrayOfTexts = Array.from(
 				document.getElementsByClassName('menu')[0].querySelectorAll('p')
 				);
+
+		const arrayOfDarkIcons = Array.from(document.getElementsByClassName('menu-icon-dark'));
 
 
 		const sidebar = document.getElementsByClassName('sidebar-info')[0];
@@ -62,10 +64,12 @@ let Custom = {
 
 		function showText(index) {
 			arrayOfTexts[index].style.opacity = '1';
+			arrayOfDarkIcons[index].style.opacity = 1;
 		}
 
 		function hideText(index) {
 			arrayOfTexts[index].style.opacity = '0';
+			arrayOfDarkIcons[index].style.opacity = 0;
 		}
 
 
@@ -77,7 +81,7 @@ let Custom = {
 
 
 		const translateHideSidebar = () => {
-			if (window.innerWidth <= 922) {
+			if (window.innerWidth <= 992) {
 				sidebar.classList.add('sidebar-mobile-hide');
 				sidebar.classList.remove('sidebar-mobile-show');
 			} else {
@@ -88,7 +92,7 @@ let Custom = {
 
 
 		const translateShowSidebar = () => {
-			if (window.innerWidth <= 922) {
+			if (window.innerWidth <= 992) {
 				sidebar.classList.add('sidebar-mobile-show');
 				sidebar.classList.remove('sidebar-mobile-hide');
 			} else {
@@ -246,7 +250,7 @@ let Custom = {
 		}
 		const innerW = window.innerWidth;
 
-		changePlaceholder(innerW <= 922)
+		changePlaceholder(innerW <= 992)
 
 
 	}
