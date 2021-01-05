@@ -120,8 +120,8 @@ let Custom = {
 		function toggleSidebarOnClick(data) {
 
 			if (data === 1) {
-				translateHideSidebar();
-				toggle = false;
+				//translateHideSidebar();
+				//toggle = false;
 				return
 			}
 
