@@ -1,0 +1,413 @@
+/*
+	ŠPECIFIKÁCIA
+
+	--- Fonty
+	Raleway Black
+	Raleway Medium
+
+	--- Farby
+	#ffffff
+	#333333
+	#e6e6e6
+
+	--- Veľkosti, výška riadku
+	15px, 26px
+	21px, 35px
+	51px, 81px
+
+	--- Gradient
+	od #e40004
+	do #222f8d
+
+	--- Hodnoty (veľkosti, farby) ukladajte do CSS variables
+	--- CSS reset už netreba pridávať, je tam Bootstrap Reboot
+	--- CSS grid je tam už tiež, Bootstrap
+	--- Vlastné CSS používajte minimálne, využite Bootstrap Utilities kde sa dá
+	--- Bootstrap časti sú z verzie 5, treba pozerať dokumentáciu getbootstrap.com
+*/
+
+:root {
+	--main-background-color: #ffffff;
+	--main-font-color: #333333;
+	--main-search-font-color: #e6e6e6;
+
+	--header-font-size: 51px;
+	--heder-line-height: 81px;
+	--items-font-size: 21px;
+	--items-line-height: 35px;
+	--text-font-size: 15px;
+	--text-line-height: 26px;
+
+	--gutter: .75rem;
+}
+
+body {
+	text-align: center;
+	font-family: 'Raleway', arial, serif;
+	font-size: var(--text-font-size);
+	line-height: var(--text-line-height);
+	background: var(--main-background-color);
+	color: var(--main-font-color);
+}
+
+p {
+	line-height: var(--text-line-height);
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--main-search-font-color);
+}
+
+.top-band {
+	background-color: var(--main-font-color);
+	height: 21px;
+}
+
+h1 {
+	font-weight: 900;
+	font-size: var(--header-font-size);
+	color: var(--main-font-color);
+	line-height: var(--heder-line-height);
+}
+
+.header {
+	margin: 40px 0 80px 0;
+}
+
+#sidebar.is-active {
+	transform: translateX(400px);
+}
+.sidebar-tab {
+	display: none;
+}
+.sidebar-tab.is-active {
+	display: block;
+}
+
+.sidebar-info {
+	position: fixed;
+	top: 0;
+	left: -400px;
+	height: 100%;
+	width: 600px;
+	text-align: left;
+	color: var(--main-search-font-color);
+	font-size: var(--text-font-size);
+	transition: all .5s ease;
+}
+
+.sidebar-hide {
+	transform: translate3d(0, 0, 0);
+}
+
+.sidebar-show {
+	transform: translate3d(400px, 0, 0);
+}
+
+.sidebar-mobile-hide {
+	transform: translate3d(0, 0, 0);
+}
+
+.sidebar-mobile-show {
+	transform: translate3d(0, -255px, 0);
+}
+
+.toggleSidebar {
+	left: 0;
+}
+
+.sidebar-info .row {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+
+}
+.menu-caption {
+	padding: 0 var(--gutter);
+	text-decoration: none;
+	font-size: var(--items-font-size);
+	font-weight: 900;
+	color: var(--main-font-color);
+	opacity: 0;
+	transition: opacity .2s ease-in;
+}
+.menu-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 40px;
+	overflow: hidden;
+    white-space: nowrap;
+}
+.menu-icn-hover {
+	display: none;
+}
+.menu-item:hover .menu-caption {
+	opacity: 1;
+}
+.menu-item:hover .menu-icn {
+	display: none;
+}
+.menu-item:hover .menu-icn-hover {
+	display: inline-block;
+}
+
+.sidebar-info-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	background: var(--main-font-color);
+	padding: 40px 40px 40px 40px;
+}
+
+.sidebar-info-text div:nth-child(2) {
+	margin-bottom: 50px;
+}
+
+.mobile-sidebar-title {
+	font-size: var(--items-font-size);
+    font-weight: 900;
+    color: var(--main-search-font-color);
+	opacity: 0;
+}
+
+.menu {
+	margin-top: 70px;
+	font-size:var(--items-font-size);
+	color: var(--main-search-font-color);
+}
+
+.menu div {
+	display: block;
+	margin-bottom: 45px;
+	position: relative;
+}
+
+.menu img {
+	cursor: pointer;
+}
+
+.menu-erb-icon, .menu-search-icon, .menu-info-icon, .menu p {
+	display: inline-block;
+}
+
+.add-new, .about-project {
+	display: none;
+}
+
+
+.menu-icon-dark {
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	transition: all .3s ease;
+}
+
+
+
+.menu p {
+	margin-left: 10px;
+	font-weight: 900;
+	color: var(--main-font-color);
+	opacity: 0;
+	transition: all .3s ease;
+}
+
+.close-icon {
+	margin-top: 35px;
+	display: block;
+	cursor: pointer;
+}
+
+.inovative {
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+input[type=text] {
+	margin-top: 100px;
+	width: 900px;
+	text-align: center;
+	font-size: var(--header-font-size);
+	font-weight: 900;
+  	border: none;
+	border-bottom: 1px solid #333333;
+	color: var(--main-search-font-color);;
+}
+
+input:focus {
+	outline: none;
+}
+
+::-webkit-input-placeholder {
+	color: var(--main-search-font-color);
+	opacity: 1;
+}
+
+::-moz-placeholder {
+	color: var(--main-search-font-color);
+	opacity: 1;
+}
+
+:-ms-input-placeholder {
+	color: var(--main-search-font-color);
+	opacity: 1;
+}
+
+::-ms-input-placeholder {
+	color: var(--main-search-font-color);
+	opacity: 1;
+}
+
+::placeholder {
+	color: var(--main-search-font-color);
+	opacity: 1;
+}
+
+.search-results {
+	margin-top: 10px;
+	overflow: auto;
+	height: 300px;
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.search-results li, .search-results a {
+	list-style: none;
+	text-decoration: none;
+	font-size: var(--header-font-size);
+	line-height: var(--header-font-size);
+	font-weight: 900;
+	color: var(--main-search-font-color);
+}
+
+.search-results li {
+	padding:var(--gutter) 0;
+	display: none;
+}
+
+
+
+
+
+/*-------------------------------------
+-------------Detail styles-------------
+-------------------------------------*/
+
+
+.detail-top-band {
+	background: linear-gradient(90deg, rgba(228,0,4,1) 0%, rgba(34,47,141,1) 100%);
+	height: 21px;
+}
+
+.erb-image {
+	margin-top: 50px;
+}
+
+.detail-header {
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
+
+.admin-details p {
+	margin: 0;
+}
+.signature {
+	margin-top: 20px;
+	font-size: var(--items-font-size);
+	font-weight: 900;
+}
+
+.download-link {
+	font-size: var(--header-font-size);
+	font-weight: 900;
+	color: var(--main-search-font-color);
+}
+
+
+
+
+/*-------------------------------------
+-------------Media queries-------------
+-------------------------------------*/
+
+
+@media (max-width: 992px) {
+
+	.header {
+		margin: 20px 0 50px 0;
+	}
+
+	.sidebar-info {
+		left: 0;
+		top: unset;
+		bottom: -255px;
+		right: 0;
+		margin-top: 0;
+		height: 350px;
+		width: 100%;
+	}
+
+	.sidebar-info-text {
+		width: 100%;
+		padding-top: 25px;
+		transform: translate3d(0, 96px, 0);
+		overflow: scroll;
+	}
+
+	.mobile-sidebar-title {
+		opacity: 1;
+	}
+
+	.inovative {
+		display: none;
+	}
+
+	.menu {
+		position: absolute;
+		width: 100%;
+		padding-top: 25px;
+		border-top: 1px solid var(--main-font-color);
+		display: flex;
+		justify-content: space-around;
+		margin: 0;
+		background: #ffffff63;
+		height: 96px;
+	}
+
+
+	.menu div {
+		display: inline-block;
+	}
+
+	.menu p {
+		display: none;
+	}
+
+	.close-icon {
+		margin: 0;
+		position: absolute;
+		top: 25px;
+		right: 40px;
+	}
+
+
+	.search-results {
+		width: 100%;
+	}
+
+	input[type=text] {
+		width: 100%;
+		margin-top: 20px;
+	}
+}

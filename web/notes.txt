@@ -1,0 +1,5 @@
+1. v CSS nastavit globalne styly pre "body" tag - background, color, font-size, line-height.
+2. co ma byt link, pouzivat "a" HTML tag (sidebar menu).
+3. v CSS pri nastavovani "font-family" je dobre ist az po poslednu uroven, t.j. bud "serif" alebo "sans-serif".
+4. loga a bezne obrazky vkladat ako "img" HTML tagy, nie cez CSS
+5. je dobre davat do HTML tagov CSS triedy a tie stylovat, nie HTML tagy - tie iba vo vseobecnych styloch, alebo 	ak sa inak neda.
